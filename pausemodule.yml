@@ -1,0 +1,20 @@
+--- # pause module
+- hosts: all
+  gather_facts: no
+  sudo: yes
+  tasks:
+  - name: start the httpd
+    block:
+     command: systemctl start httpd
+    rescue:
+    - debug: msg='error'
+  - name: check the httpd started or not
+    pause: 
+     prompt: 'Please enter to continue...'
+  - name: Installation of the lynx
+    action: yum name=lynx state=installed
+  - name: start the lynx - wait for 10 seconds
+    pause:
+      seconds: 10
+  - name: start the lynx
+    command: systemctl start lynx

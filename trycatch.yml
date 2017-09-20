@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  tasks:
+  - name: trycatch module
+    block: 
+    - debug: msg='start'
+    - command: /bin/false
+    - debug: msg='false'
+    rescue: 
+    - debug: msg='catch block'

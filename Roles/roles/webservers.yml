@@ -1,0 +1,12 @@
+--- #main.yml file
+- hosts: all
+  connection: ssh
+  pre_tasks:
+  - name: Pre Task
+    raw: date > TaskStart.txt
+  roles:
+    - webservers
+  post_tasks:
+  - name: Post Task
+    raw: date >> TaskStart.txt
+  - debug: msg={{ copy_right }}

@@ -1,0 +1,16 @@
+--- # INSTALL THE HTTPD WEBSERVICE
+- hosts: all
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+  - name: installation of httpd service in all servers
+    #async: 300
+    poll: 3
+    yum: name=httpd state=latest
+    notify: restart
+  handlers:  
+  - name: restart
+    command: systemctl restart httpd
+
+

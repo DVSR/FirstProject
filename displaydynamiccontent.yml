@@ -1,0 +1,15 @@
+--- # DYNAMIC HOST FILE DISPLAY
+- hosts: all
+  sudo_user: yes
+  connection: ssh
+  gather_facts: no
+  vars_prompt:
+  - name: file_name
+    prompt: Which file need to display?
+  tasks:
+  - name: File content display
+    shell: cat {{ file_name }}
+    register: result
+  - debug: var=result
+
+  

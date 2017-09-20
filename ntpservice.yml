@@ -1,0 +1,17 @@
+--- # NTP SERVER INSTALLATION
+- hosts: all
+  #sudo: yes
+  #connection: ssh
+  gather_facts: yes
+  vars:
+  - name: Ansible control server
+    prompt: control server - NTP server installation
+  tasks:
+  - name: installation of NTP Server on local
+    poll: 3
+    yum: name=ntp state=latest
+    when: ansible_os_family == "RedHat"
+
+  - name: installation of the NTP server
+    apt: name=ntp state=latest
+    when: ansible_os_family == "Debian"

@@ -1,0 +1,12 @@
+--- #until example
+- hosts: all
+  connection: ssh
+  gather_facts: no
+  become_user: yes
+  tasks:
+  - name: to check the httpd is running...
+    shell: systemctl status httpd
+    register: result
+  - debug: var=result
+    
+  

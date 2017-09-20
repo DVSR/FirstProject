@@ -1,0 +1,9 @@
+--- #First File
+- hosts: ubuntu1client
+  become_user: yes
+  connection: ssh
+  tasks:
+  - name: To Display the time
+    raw: /bin/date >> /home/ubuntu1/timelog.txt
+
+

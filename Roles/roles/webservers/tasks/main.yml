@@ -1,0 +1,15 @@
+# tasks file for webservers
+- name: installation of the webserver in centos
+  yum: name=httpd state=latest
+  #async: 200
+  poll: 3
+  when: ansible_os_family=="RedHat"
+  notify: restart httpd
+
+- name: installation of webserver in Ubuntu
+  apt: name=apache2 state=latest
+  #async: 200
+  poll: 3
+  when: ansible_os_family=="Debian"
+  notify: restart apache2
+
