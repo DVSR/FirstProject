@@ -1,0 +1,7 @@
+--- # to ping all the hosts
+- hosts: all
+  connection: ssh
+  gather_facts: no
+  tasks:
+  - name: To ping all the hosts
+    ping:
